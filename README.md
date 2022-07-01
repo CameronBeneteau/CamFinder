@@ -1,8 +1,8 @@
 # CamFinder
-Automation Tool For Proposal Submission on a social media Service Provider Platform using Python, Selenium, Chrome WebDriver & Web Scraping
+Automation tool For proposal submission on a social media service provider platform using Python, Selenium, Chrome WebDriver & Web Scraping
 
 General Notes:
-  - Update your login info in the "Info.py" file (more instructions can be found in there)
+  - Update your login info in the "Info.py" file (more instructions can be found there)
   - Update you proposal script in the "Proposal_Script.txt" file
 
 Chrome Driver Notes:
