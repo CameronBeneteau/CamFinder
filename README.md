@@ -8,5 +8,5 @@ General Notes:
 Chrome Driver Notes:
   - The current Chrome Driver file is for Google Chrome Version 102.0.5005.61
   - Make sure the "chromedriver.exe" file is updated and/or replaced for the version of Google Chrome you are running
-  - Check your version of Chrome by going to Settings -> About Chrome
+  - Check your version of Chrome by going to Settings (3 dots in top right corner) -> About Chrome
   - Download Chrome Driver here: https://chromedriver.chromium.org/downloads
