@@ -1,5 +1,5 @@
 # CamFinder
-Automation Tool For Proposal Submission on LinkedIn Service Provider
+Automation Tool For Proposal Submission on LinkedIn Service Provider using Python, Selenium, Chrome WebDriver & Web Scraping
 
 General Notes:
   - Update your login info in the "Info.py" file (more instructions can be found in there)
