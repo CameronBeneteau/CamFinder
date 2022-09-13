@@ -2,12 +2,19 @@
 # Version 1
 # 
 # By: Cameron Beneteau
-# Date: June 19th, 2022
+# Date: September 12th, 2022
 
-#  Includes:
+# Includes:
+# Proposal Submission
+# Stores names of submitted proposals in csv file (bugged) 
+# Automatic refresh on error
 
 # Next Steps:
-
+# API Connection
+# Push Texts to Phone and/or Email
+# Frontend UI for control
+# Automatic messages based on sent proposals
+# Modularize code more and use more mature logic
 
 # Imports
 # from selenium import webdriver
