@@ -17,6 +17,6 @@ Automation tool for proposal submission on a social media service provider platf
   - Download Chrome Driver here: https://chromedriver.chromium.org/downloads
 
 ## Results:
-As of August 20th, 2022 (exactly 2 months since our latest version update on June 20th, 2022) we have:
+As of August 20th, 2022 (exactly 2 months since the latest release on June 20th, 2022) we have:
 - Sent out over 1,350 proposals
 - Saved over 22.5 hours (81,000 seconds or 1,350 minutes) of manual proposal submissions
