@@ -5,11 +5,11 @@ Automation tool For proposal submission on a social media service provider platf
 [1. General](#General)  
 [2. Chrome Driver](#Chrome-Driver)  
 
-## General:
+# General:
   - Update your login info in the "Info.py" file (more instructions can be found there)
   - Update you proposal script in the "Proposal_Script.txt" file
 
-## Chrome Driver:
+# Chrome Driver:
   - The current Chrome Driver file is for Google Chrome Version 102.0.5005.61
   - Make sure the "chromedriver.exe" file is updated and/or replaced for the version of Google Chrome you are running
   - Check your version of Chrome by going to Settings (3 dots in top right corner) -> About Chrome
