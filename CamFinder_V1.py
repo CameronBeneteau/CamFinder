@@ -2,19 +2,12 @@
 # Version 1
 # 
 # By: Cameron Beneteau
-# Date: September 12th, 2022
+# Date: November 19th, 2022
 
-# Includes:
-# Proposal Submission
-# Stores names of submitted proposals in csv file (bugged) 
-# Automatic refresh on error
+#  Includes:
 
 # Next Steps:
-# API Connection
-# Push Texts to Phone and/or Email
-# Frontend UI for control
-# Automatic messages based on sent proposals
-# Modularize code more and use more mature logic
+
 
 # Imports
 # from selenium import webdriver
@@ -44,6 +37,7 @@ from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
 import csv
 
@@ -156,10 +150,17 @@ def check_for_proposals():
 
     # time.sleep(5)
 
-    send_proposal_button = driver.find_elements_by_class_name('artdeco-button--primary')
+    continue_proposal_button = driver.find_elements(By.CSS_SELECTOR, '.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view')
+    # send_proposal_button = driver.find_elements_by_class_name('artdeco-button--primary')
     
+    for element in (continue_proposal_button):
+        if "Continue" == element.get_attribute("innerText"):
+            element.click()
+
+    send_proposal_button = driver.find_elements(By.CSS_SELECTOR, '.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view')
+
     for element in (send_proposal_button):
-        if "Submit" in element.get_attribute("innerText"):
+        if "Submit" == element.get_attribute("innerText"):
             element.click()
 
             now = datetime.now()
@@ -179,6 +180,13 @@ def check_for_proposals():
 
     print("-" * 75)
 
+def close_messages():
+
+    close_message_button = driver.find_elements_by_xpath("//*[@class='msg-overlay-bubble-header__control' and @class='artdeco-button artdeco-button--circle' and @class='artdeco-button--muted' and @class='artdeco-button--1' and @class='artdeco-button--tertiary' and @class='ember-view']")
+    print(close_message_button)
+    for b in close_message_button:
+        b.click()
+
 def main():
 
     login()
@@ -189,6 +197,7 @@ def main():
     client_requests_page()
 
     while True:
+        #close_messages()
         check_for_proposals()
 
 if __name__ == "__main__":
