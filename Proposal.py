@@ -34,24 +34,24 @@ class Proposal:
             self.driver.find_element(
                 By.CSS_SELECTOR, "[data-test-text-selectable-option__label]"
             ).click()
+            print("Consultation clicked")
 
     def submit(self):
         self.driver.find_element(
             By.CSS_SELECTOR, "[data-test-proposal-submission-modal__submit-button]"
         ).click()
 
-    def save_profil_details(self):
-        proposalInfo = ProposalInfo(self.driver)
-
-        info: ProfileInfo = proposalInfo.get_proposal_info()
+    def save_profile_details(self, info):
+        # proposal_info = ProposalInfo(self.driver)
+        # info: ProfileInfo = proposal_info.get_proposal_info()
 
         # Pass same time to both updates?
         self.save_to_text_file(info)
         self.save_to_database(info)
 
     def save_to_database(self, info: ProfileInfo):
-        dynamoDb = DynamoDb(UserConfig.USER_ID, Const.TABLE_NAME, UserConfig.REGION)
-        dynamoDb.putItem(info)
+        dynamo_db = DynamoDb(UserConfig.USER_ID, Const.TABLE_NAME, UserConfig.REGION)
+        dynamo_db.putItem(info)
 
     def save_to_text_file(self, info: ProfileInfo):
         with open("sent_proposals.csv", "a", newline="", encoding="utf-8") as file:
@@ -69,9 +69,22 @@ class Proposal:
             )
 
     def main(self):
+        proposal_info = ProposalInfo(self.driver).get_proposal_info()
+
+        print("Proposal Details:")
+        print(f"Name: {proposal_info.name}")
+        print(f"Service Type: {proposal_info.service_type}")
+        print(f"Location: {proposal_info.location}")
+        print(f"Profile Description: {proposal_info.profile_description}")
+        print(f"Profile Link: {proposal_info.profile_link}")
+        print("\n")
+
         self.open_latest_proposal()
         time.sleep(5)
         self.enter_proposal_script()
+        print("Script entered")
         self.check_consultation()
         self.submit()
-        self.save_profil_details()
+        self.save_profile_details(proposal_info)
+        print("Recorded to text file and database\n")
+        print(f"Proposal submitted on {DateTime().get_time_formatted()}")

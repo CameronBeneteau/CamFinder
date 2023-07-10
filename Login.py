@@ -37,7 +37,7 @@ class Login:
                 button.click()
                 break
 
-    # TODO: May need to refactor depending on security measures (phone, image, etc.)
+    # May need to refactor depending on security measures (phone, image, etc.)
     # <h1>Let's do a quick security check</h1>
     # https://www.linkedin.com/checkpoint/challenge/AgHypfhMZyfs1QAAAYkK52OLFYxGh0R3BHOrlpLUQzdqAbM9GI4Ztg3iWU7cNF6dsLvqeW-jZbTZKiuNqLHBIi1t8eZ4OQ?ut=1uiGC-jlmIjGQ1
     def wait_for_homepage(self):
@@ -45,6 +45,7 @@ class Login:
             if self.driver.current_url == Const.HOMEPAGE_URL:
                 return
             else:
+                print("Waiting for homepage...\n")
                 time.sleep(1)
 
         raise Exception(
@@ -52,12 +53,16 @@ class Login:
         )
 
     def main(self):
+        print("Opening login page...\n")
         self.open_login_page()
 
         if self.driver.current_url == Const.LOGIN_URL:
             if self.email_field_empty():
                 self.enter_email()
             self.enter_password()
+            print("Account info entered")
             self.submit()
+            print("Logged in\n")
 
         self.wait_for_homepage()
+        print("Homepage loaded\n")

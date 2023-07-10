@@ -5,6 +5,8 @@ from selenium.webdriver.common.by import By
 import Const
 import UserConfig.UserConfig as UserConfig
 
+from Utils.DateTime import DateTime
+
 
 class Proposals:
     def __init__(self, driver: webdriver.Chrome):
@@ -20,9 +22,14 @@ class Proposals:
         )
 
         if len(proposalContainer) != 0:
+            print("Proposal found - opening proposal submission window\n")
             return
         else:
+            print("No proposals found\n")
+            print(f"Refreshing page in {UserConfig.PROPOSAL_REFRESH_TIME} minutes")
             time.sleep(UserConfig.PROPOSAL_REFRESH_TIME * 60)
+            print("-" * 75)
+            print(f"Refreshed page on {DateTime().get_time_formatted()}\n")
             self.main()
 
     def main(self):

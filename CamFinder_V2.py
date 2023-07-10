@@ -26,6 +26,9 @@ if __name__ == "__main__":
             login.main()
 
             while True:
+                print("\nOpening new requests page...\n")
+                print("-" * 75)
+
                 proposals = Proposals(driver)
                 proposals.main()
 
