@@ -51,7 +51,7 @@ class Proposal:
 
     def save_to_database(self, info: ProfileInfo):
         dynamo_db = DynamoDb(UserConfig.USER_ID, Const.TABLE_NAME, UserConfig.REGION)
-        dynamo_db.putItem(info)
+        dynamo_db.put_item(info)
 
     def save_to_text_file(self, info: ProfileInfo):
         with open("sent_proposals.csv", "a", newline="", encoding="utf-8") as file:
