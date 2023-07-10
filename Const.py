@@ -19,4 +19,4 @@ DECLINE_PROPOSAL_BUTTON_TEXT: str = "Decline"
 
 # AWS Information
 AWS_ID: int = 773768603854
-TABLE_NAME: str = "Submissions-Test"
+TABLE_NAME: str = "Proposal-Submissions"
