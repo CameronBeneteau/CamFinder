@@ -35,6 +35,6 @@ if __name__ == "__main__":
                 proposal = Proposal(driver)
                 proposal.main()
 
-        except Exception as e:
+        except Exception as exception:
             print("Error Detected - Restarting CamFinder V2 Now")
-            print(e)
+            print(exception)

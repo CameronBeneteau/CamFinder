@@ -1,17 +1,17 @@
 import boto3
 
-from Enums.Region import Region
+from Enums.RegionEnum import RegionEnum
 from Models.PofileInfo import ProfileInfo
 from Utils.DateTime import DateTime
 
 
 class DynamoDb:
-    def __init__(self, client_id: str, table_name: str, region: Region) -> None:
+    def __init__(self, client_id: str, table_name: str, region: RegionEnum) -> None:
         self.client_id: str = client_id
         self.table_name: str = table_name
         self.dynamodb_client = boto3.client("dynamodb", region_name=region.value)
 
-    def put_item(self, item: ProfileInfo):
+    def put_item(self, item: ProfileInfo, status: str, notes: str):
         self.dynamodb_client.put_item(
             TableName=self.table_name,
             Item={
@@ -22,5 +22,7 @@ class DynamoDb:
                 "Location": {"S": item.location},
                 "ProfileDescription": {"S": item.profile_description},
                 "ProfileLink": {"S": item.profile_link},
+                "Status": {"S": status},
+                "Notes": {"S": notes},
             },
         )
